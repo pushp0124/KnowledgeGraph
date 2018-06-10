@@ -1,0 +1,18 @@
+<ngx-loading [show]="!isDataLoaded" ></ngx-loading>
+<div *ngIf="isDataLoaded">
+  <mat-card>
+    <img *ngIf="isContentUrl" mat-card-image [src]="responseFromServer.itemListElement[0].result.image.contentUrl">
+    <br>
+    <h2 *ngIf="isName"> {{responseFromServer.itemListElement[0].result.name}} </h2>
+    <mat-card-content>
+      <h3 *ngIf="isDescription">{{responseFromServer.itemListElement[0].result.description}}</h3>
+    <div *ngIf="isArticleBody" >
+      {{responseFromServer.itemListElement[0].result.detailedDescription.articleBody}}
+    </div>
+      <br>
+      <a *ngIf="isUrl" [href]="responseFromServer.itemListElement[0].result.detailedDescription.url">Read More:</a>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

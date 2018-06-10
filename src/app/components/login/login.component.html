@@ -1,0 +1,24 @@
+<ngx-loading [show]="isShow"></ngx-loading>
+<div fxLayout="column" fxLayoutAlign="center center" >
+
+  <mat-card fxFlex="100%" fxLayout = "column" fxLayoutAlign = "center stretch">
+
+    <div fxFlex="80%">
+      <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="space-around" >
+        <mat-form-field fxFlex="80%">
+          <input [formControlName]="'api-key'" matInput placeholder="Please Enter Your API key!" #key [type]="!hide ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hide = !hide">{{!hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+        <div fxFlex="10%">
+          <div fxLayout="row" fxLayoutAlign="center center" >
+            <button mat-raised-button color="primary" (click)="onLogin(key)" [disabled]="
+      !loginForm.get('api-key').valid" >Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <mat-card-content *ngIf=!loggedIn fxFlex="10%" > Please Provide us right info. </mat-card-content>
+  </mat-card>
+</div>
+
+

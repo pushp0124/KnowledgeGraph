@@ -1,0 +1,24 @@
+ <mat-card>
+    <form [formGroup]="searchForm" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxFlex="80%" fxLayout="row" fxLayoutAlign="none center">
+        <mat-form-field appearance="outline" fxFlex="95%">
+          <mat-label>Search</mat-label>
+          <input matInput type="text" #t [formControlName]="'searchText'" >
+        </mat-form-field>
+        <button mat-icon-button type = "button" (click)="onSearchClicked(t)" [disabled]=" !searchForm.get('searchText').valid" fxFlex="5%">
+          <mat-icon> search </mat-icon>
+        </button>
+      </div>
+      <button mat-raised-button color="accent" type = "button" (click)="onLogout(t)" fxFlex="5%" >
+        Logout
+      </button>
+    </form>
+  </mat-card>
+  <br>
+  <br>
+  <div fxLayout="row" fxLayoutAlign="end center">
+  <app-display-knowledge-graph *ngIf = "isClicked" [Text]= "searchText" fxFlex="25%">
+
+  </app-display-knowledge-graph>
+
+</div>
